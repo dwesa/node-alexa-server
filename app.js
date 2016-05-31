@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 function init(cb) {
   app.post('/testing', employerIntent);
-
   app.listen(process.env.PORT);
 }
 
+init();
