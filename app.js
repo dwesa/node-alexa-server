@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 function init(cb) {
   app.post('/testing', intentHandler);
   app.get('/hello', function(req, res){
-    res.send({"hello guys"});
+    res.send("hello guys");
   });
   app.listen(process.env.PORT);
 }
