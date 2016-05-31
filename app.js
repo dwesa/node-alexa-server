@@ -5,9 +5,11 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var app = express();
+var employerIntent = require('./app_modules/employer');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 
 /*
@@ -15,34 +17,8 @@ app.use(bodyParser.json());
  */
 
 function init(cb) {
-  var modulePath = path.resolve(path.join(__dirname, './app_modules'));
-  fs.readdir(modulePath, function(err, services) {
-    var moduleArray = [];
-    services.forEach(function(module) {
-      moduleArray.push(require('./app_modules/employer.js'));
-    });
-    async.series(moduleArray, function(err, results) {
-      if (err) {
-        console.error(err);
-      } else {
-        cb();
-      }
-    });
-  });
-}
-
-
-init(function() {
-  // Manually hook the handler function into express
-  app.post('/testing', function(req, res) {
-    console.log(req.body);
-    console.log(req.params);
-    global['test'].request(req.body)
-      .then(function(response) {
-        console.log(response);
-        res.json(response);
-      });
-  });
+  app.post('/testing', employerIntent);
 
   app.listen(process.env.PORT);
-});
+}
+

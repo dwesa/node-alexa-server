@@ -6,7 +6,7 @@ var testApp = new alexa.app('test');
 
 // simply respond to the intent
 testApp.intent('employer', function(req, res) {
-    res.say("You work for B M W North America");
+	res.say("You work for B M W North America");
 });
 
 // not needed since the intent automatically launches
@@ -16,7 +16,9 @@ testApp.intent('employer', function(req, res) {
 //     res.say("Please say any number");
 // });
 
-module.exports = function(cb) {
-    global.test = testApp;
-    cb();
+module.exports = function(req, res) {
+    testApp.Request(req.body)
+    .then(function(response){
+    	next();
+    });
 };
