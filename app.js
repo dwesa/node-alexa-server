@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var app = express();
-var intentHendler = require('./app_modules/employer');
+var intentHendler = require('./app_modules/intents');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
