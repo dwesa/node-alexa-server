@@ -19,6 +19,6 @@ testApp.intent('employer', function(req, res) {
 module.exports = function(req, res) {
     testApp.request(req.body)
     .then(function(response){
-    	console.log("asd");
+    	res.json(response);
     });
 };
