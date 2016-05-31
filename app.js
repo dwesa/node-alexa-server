@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var app = express();
-var employerIntent = require('./app_modules/employer');
+var intentHendler = require('./app_modules/employer');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
  */
 
 function init(cb) {
-  app.post('/testing', employerIntent);
+  app.post('/testing', intentHandler);
   app.listen(process.env.PORT);
 }
 

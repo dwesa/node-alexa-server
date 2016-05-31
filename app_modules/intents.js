@@ -8,6 +8,9 @@ var testApp = new alexa.app('test');
 testApp.intent('employer', function(req, res) {
 	res.say("You work for B M W North America");
 });
+testApp.intent('location', function(req, res) {
+	res.say("we are in Chicago Illinois");
+});
 
 // not needed since the intent automatically launches
 // // process launch request when no utterances detected
