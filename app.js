@@ -19,7 +19,7 @@ function init(cb) {
   fs.readdir(modulePath, function(err, services) {
     var moduleArray = [];
     services.forEach(function(module) {
-      moduleArray.push(require('./app_modules/' + module));
+      moduleArray.push(require('./app_modules/employer.js'));
     });
     async.series(moduleArray, function(err, results) {
       if (err) {
@@ -34,10 +34,10 @@ function init(cb) {
 
 init(function() {
   // Manually hook the handler function into express
-  app.post('/:service', function(req, res) {
+  app.post('coolteamtestapp', function(req, res) {
     //console.log(req.body);
       // console.log(req.params);
-    global[req.params.service].request(req.body)
+    global['test'].request(req.body)
       .then(function(response) {
         console.log(response);
         res.json(response);
