@@ -34,9 +34,9 @@ function init(cb) {
 
 init(function() {
   // Manually hook the handler function into express
-  app.post('coolteamtestapp', function(req, res) {
-    //console.log(req.body);
-      // console.log(req.params);
+  app.post('/testing', function(req, res) {
+    console.log(req.body);
+    console.log(req.params);
     global['test'].request(req.body)
       .then(function(response) {
         console.log(response);
